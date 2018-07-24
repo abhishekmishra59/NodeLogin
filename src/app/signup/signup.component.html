@@ -1,0 +1,49 @@
+<!-- <div class="loadingWrapper" *ngIf="isloading"> 
+    <div class="loader"></div>
+  </div> -->
+  
+  <div class="container-login100" style="background-image: url('assets/images/bg-01.jpg');">
+    <div class="wrap-login100 p-l-55 p-r-55 p-t-80 p-b-30">
+      <form class="login100-form validate-form">
+        <span class="login100-form-title p-b-37">
+          Sign Up
+        </span>
+  
+        <div class="wrap-input100 validate-input m-b-20" data-validate="Enter username or email">
+          <input class="input100" type="text" [(ngModel)]="username" name="username" placeholder="username or email">
+          <span class="focus-input100"></span>
+        </div>
+  
+        <div class="wrap-input100 validate-input m-b-25" data-validate = "Enter password">
+          <input class="input100" type="password" [(ngModel)]="password" name="pass" placeholder="password">
+          <span class="focus-input100"></span>
+        </div>
+
+        <div class="wrap-input100 validate-input m-b-25" data-validate = "Re-Enter password">
+            <input class="input100" type="password" [(ngModel)]="repassword" name="pass" placeholder="re-enter password">
+            <span class="focus-input100"></span>
+          </div>
+
+        <div class="wrap-input100 validate-input m-b-25" data-validate = "Enter mobile number">
+              <input class="input100" type="number" [(ngModel)]="mobile" name="pass" placeholder="Mobile number">
+              <span class="focus-input100"></span>
+            </div>
+  
+        <div class="container-login100-form-btn">
+          <button class="login100-form-btn" (click)="signup()">
+            Sign Up
+          </button>
+        </div>  
+        <div class="text-center" *ngIf="createuser=='created'"><p class="text-success">Account Created</p></div>
+        <div class="text-center" *ngIf="createuser=='alreadyExist'"><p class="text-danger">User Already exist</p></div>
+        <div class="text-center" *ngIf="createuser=='passwordMatch'"><p class="text-danger">Password Don't Match</p></div>
+        <div class="text-center" *ngIf="createuser=='details'"><p class="text-danger"><i><h6>Please enter proper details</h6></i></p></div>
+        <br>
+        <div class="text-center">
+          <a href="/login" class="txt2 hov1">
+            Back to Login
+          </a>
+        </div>
+      </form>
+    </div>
+  </div>
