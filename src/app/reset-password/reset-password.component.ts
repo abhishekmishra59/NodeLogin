@@ -1,8 +1,8 @@
-import { User } from './../User';
+import { User } from '../User';
 import { CookieService } from 'ngx-cookie-service';
 import { Router } from '@angular/router';
-import { LoginServiceService } from './../login/login-service.service';
-import { ChangePasswordService } from './../change-password/change-password.service';
+import { LoginServiceService } from '../login/login-service.service';
+import { ChangePasswordService } from '../change-password/change-password.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({

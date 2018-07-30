@@ -1,3 +1,4 @@
+import { GoogleLoginComponent } from './google-login/google-login.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { ChangePasswordComponent } from './change-password/change-password.component';
@@ -17,7 +18,8 @@ const routes: Routes = [
   { path: 'dashboard',component:DashboardComponent},
   { path: 'change-password',component:ChangePasswordComponent},
   { path: 'forgot',component:ForgotPasswordComponent},
-  { path: 'reset',component:ResetPasswordComponent}
+  { path: 'reset',component:ResetPasswordComponent},
+  { path: 'googleLog',component:GoogleLoginComponent},
   
  
 ];

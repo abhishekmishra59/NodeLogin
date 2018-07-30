@@ -1,3 +1,5 @@
+import { GoogleLoginService } from './google-login/google-login.service';
+import { GoogleLoginComponent } from './google-login/google-login.component';
 import { ForgotPasswordService } from './forgot-password/forgot-password.service';
 import { ChangePasswordService } from './change-password/change-password.service';
 import { SignupService } from './signup/signup.service';
@@ -17,8 +19,22 @@ import { CookieService } from 'ngx-cookie-service';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { ResetPasswordService } from './reset-password/reset-password.service';
+import { SocialLoginModule, AuthServiceConfig } from "angular4-social-login";
+import { GoogleLoginProvider, FacebookLoginProvider } from "angular4-social-login";
 
 
+
+
+let config = new AuthServiceConfig([
+  {
+    id: GoogleLoginProvider.PROVIDER_ID,
+    provider: new GoogleLoginProvider("860967617425-icf05td2metfl80ftscijem50nlbiss0.apps.googleusercontent.com")
+  },
+  {
+    id: FacebookLoginProvider.PROVIDER_ID,
+    provider: new FacebookLoginProvider("472200086586196")
+  }
+]);
 
 @NgModule({
   declarations: [
@@ -29,7 +45,8 @@ import { ResetPasswordService } from './reset-password/reset-password.service';
     DashboardComponent,
     ChangePasswordComponent,
     ForgotPasswordComponent,
-    ResetPasswordComponent
+    ResetPasswordComponent,
+    GoogleLoginComponent
    
   ],
   imports: [
@@ -37,8 +54,9 @@ import { ResetPasswordService } from './reset-password/reset-password.service';
     FormsModule,
     HttpClientModule,
     AppRoutingModule
+    ,SocialLoginModule.initialize(config)
   ],
-  providers: [LoginServiceService,SignupService,ChangePasswordService,CookieService,ForgotPasswordService,ResetPasswordService],
+  providers: [LoginServiceService,SignupService,ChangePasswordService,CookieService,ForgotPasswordService,ResetPasswordService,GoogleLoginService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

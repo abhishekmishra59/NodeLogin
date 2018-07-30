@@ -1,3 +1,4 @@
+import { GoogleLoginService } from './../google-login/google-login.service';
 import { User } from '../User';
 import { LoginServiceService } from './login-service.service';
 
@@ -13,7 +14,7 @@ import { CookieService } from 'ngx-cookie-service';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private service :LoginServiceService,private router:Router,private cookieService: CookieService) {
+  constructor(private service :LoginServiceService,private router:Router,private cookieService: CookieService,private googleLoginService:GoogleLoginService) {
     
    }
 
@@ -39,5 +40,8 @@ export class LoginComponent implements OnInit {
       else
       this.loggedIn="failure";
   });
+  }
+  loginWithGoogle(){
+    this.googleLoginService.signInWithGoogle();
   }
 }
