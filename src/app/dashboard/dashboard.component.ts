@@ -1,5 +1,4 @@
-import { GoogleLoginService } from './../google-login/google-login.service';
-import { GoogleLoginComponent } from '../google-login/google-login.component';
+import { LoginServiceService } from './../login/login-service.service';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { Component, OnInit } from '@angular/core';
@@ -12,16 +11,15 @@ import { Component, OnInit } from '@angular/core';
 export class DashboardComponent implements OnInit {
 
   photoUrl:string;
-  constructor(private cookieService:CookieService,private router:Router,private googleLoginService:GoogleLoginService) { }
+  constructor(private cookieService:CookieService,private router:Router,private loginService:LoginServiceService) { }
 
   ngOnInit() {
     if(this.cookieService.check("username")==false){
       this.router.navigate(["/login"]);
     }
-    
   }
 logout(){
 this.cookieService.deleteAll();
-this.googleLoginService.signOut();
+this.loginService.signOut();
 }
 }

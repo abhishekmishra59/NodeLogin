@@ -1,5 +1,3 @@
-import { GoogleLoginService } from './google-login/google-login.service';
-import { GoogleLoginComponent } from './google-login/google-login.component';
 import { ForgotPasswordService } from './forgot-password/forgot-password.service';
 import { ChangePasswordService } from './change-password/change-password.service';
 import { SignupService } from './signup/signup.service';
@@ -11,7 +9,6 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule }    from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
-import { DbComponent } from './db/db.component';
 import { SignupComponent } from './signup/signup.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ChangePasswordComponent } from './change-password/change-password.component';
@@ -21,6 +18,8 @@ import { ResetPasswordComponent } from './reset-password/reset-password.componen
 import { ResetPasswordService } from './reset-password/reset-password.service';
 import { SocialLoginModule, AuthServiceConfig } from "angular4-social-login";
 import { GoogleLoginProvider, FacebookLoginProvider } from "angular4-social-login";
+import { TopnavComponent } from './topnav/topnav.component';
+import { FooterComponent } from './footer/footer.component';
 
 
 
@@ -40,13 +39,13 @@ let config = new AuthServiceConfig([
   declarations: [
     AppComponent,
     LoginComponent,
-    DbComponent,
     SignupComponent,
     DashboardComponent,
     ChangePasswordComponent,
     ForgotPasswordComponent,
     ResetPasswordComponent,
-    GoogleLoginComponent
+    TopnavComponent,
+    FooterComponent
    
   ],
   imports: [
@@ -56,7 +55,7 @@ let config = new AuthServiceConfig([
     AppRoutingModule
     ,SocialLoginModule.initialize(config)
   ],
-  providers: [LoginServiceService,SignupService,ChangePasswordService,CookieService,ForgotPasswordService,ResetPasswordService,GoogleLoginService],
+  providers: [LoginServiceService,SignupService,ChangePasswordService,CookieService,ForgotPasswordService,ResetPasswordService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

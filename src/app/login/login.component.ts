@@ -1,4 +1,4 @@
-import { GoogleLoginService } from './../google-login/google-login.service';
+import { AuthService, SocialUser, FacebookLoginProvider, GoogleLoginProvider } from 'angular4-social-login';
 import { User } from '../User';
 import { LoginServiceService } from './login-service.service';
 
@@ -14,12 +14,20 @@ import { CookieService } from 'ngx-cookie-service';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private service :LoginServiceService,private router:Router,private cookieService: CookieService,private googleLoginService:GoogleLoginService) {
+  constructor(private service :LoginServiceService,private router:Router,private cookieService: CookieService,private authService: AuthService) {
     
    }
 
   ngOnInit() {
-    
+    this.authService.authState.subscribe((user) => {
+      // alert(this.googleLoginService)
+      this.user = user;
+      this.loggedInGoogle = (user != null);
+      if(this.loggedInGoogle){
+        this.cookieService.set("username",this.user.name);
+        this.router.navigate(['/dashboard']);
+      }
+    });
   }
   username:string;
   password:string;
@@ -41,7 +49,24 @@ export class LoginComponent implements OnInit {
       this.loggedIn="failure";
   });
   }
-  loginWithGoogle(){
-    this.googleLoginService.signInWithGoogle();
+  
+
+
+  private user: SocialUser;
+  private loggedInGoogle: boolean;
+ 
+ 
+  
+ 
+  signInWithGoogle(): void {
+    this.authService.signIn(GoogleLoginProvider.PROVIDER_ID);
+  }
+ 
+  signInWithFB(): void {
+    this.authService.signIn(FacebookLoginProvider.PROVIDER_ID);
+  }
+ 
+  signOut(): void {
+    this.service.signOut();
   }
 }
