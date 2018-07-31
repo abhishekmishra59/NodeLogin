@@ -18,8 +18,5 @@ export class DashboardComponent implements OnInit {
       this.router.navigate(["/login"]);
     }
   }
-logout(){
-this.cookieService.deleteAll();
-this.loginService.signOut();
-}
+
 }
